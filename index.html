@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Today is Joby's Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #fdf5f7;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        h1 { color: #b84a65; font-size: 28px; font-weight: 900; }
+        .subtitle { color: #7a6568; font-size: 15px; font-weight: 600; margin-bottom: 20px; }
+        .btn {
+            background-color: #703646;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: #552735; }
+        .quiz-step { display: none; text-align: right; }
+        .quiz-box { background: #fff6f8; padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1.5px solid #f9d5de; }
+        .quiz-box h3 { font-size: 16px; color: #4a3b3c; margin-bottom: 12px; line-height: 1.6; }
+        .option {
+            display: block;
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #f0d5db;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            color: #5c484a;
+        }
+        .option input { margin-left: 10px; transform: scale(1.2); }
+        .alert-msg { color: #d9534f; background: #fdf2f2; padding: 10px; border-radius: 8px; margin-top: 10px; display: none; text-align: center; font-weight: bold; }
+        .memories { display: none; text-align: center; }
+        .love-letter, .music-box, .video-box { 
+            background: #fff6f8; 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin-top: 15px; 
+            border: 1.5px solid #f9d5de; 
+            text-align: right; 
+            line-height: 1.8;
+            font-size: 15px;
+            font-weight: 600;
+            color: #4a3b3c;
+            white-space: pre-line; /* عشان يحافظ على المسافات والسطور بتاعت الرسالة */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- شاشة البداية -->
+        <div id="welcome-section">
+            <p class="subtitle">A SPECIAL DAY</p>
+            <h1>Today is Joby's Birthday</h1>
+            <p class="subtitle">✨ Let the celebration begin</p>
+            <button class="btn" id="start-btn">ابدأ الكويز ←</button>
+        </div>
+
+        <!-- السؤال الأول -->
+        <div id="step-1" class="quiz-step">
+            <div class="quiz-box">
+                <h3>السؤال الأول: بتحب إيه أكتر؟</h3>
+                <label class="option"><input type="radio" name="q1" value="wrong"> صينية البطاطس</label>
+                <label class="option"><input type="radio" name="q1" value="wrong"> ورق عنب</label>
+                <label class="option"><input type="radio" name="q1" value="right"> أنا ❤️</label>
+                <div id="alert-1" class="alert-msg">طب مفيش عيد ميلاد كده! حاول تاني 😾</div>
+            </div>
+            <button class="btn check-btn" data-step="1">تأكيد الإجابة</button>
+        </div>
+
+        <!-- السؤال الثاني -->
+        <div id="step-2" class="quiz-step">
+            <div class="quiz-box">
+                <h3>السؤال الثاني: لو جيت في يوم وقلتلك مش قادرة أطبخ.. هتعمل إيه؟</h3>
+                <label class="option"><input type="radio" name="q2" value="wrong"> هتقولي انا جعان قومي اعمليلي اي حاجه</label>
+                <label class="option"><input type="radio" name="q2" value="right"> هتقولي ارتاحي يا حبيبتي وانا هجيبلينا اكل جاهز</label>
+                <label class="option"><input type="radio" name="q2" value="wrong"> هتروح تاكل عند مامك وتسيبني</label>
+                <div id="alert-2" class="alert-msg">طب مفيش عيد ميلاد كده! حاول تاني 😾</div>
+            </div>
+            <button class="btn check-btn" data-step="2">تأكيد الإجابة</button>
+        </div>
+
+        <!-- السؤال الثالث -->
+        <div id="step-3" class="quiz-step">
+            <div class="quiz-box">
+                <h3>السؤال الثالث: لو خدت عربيتك في يوم وخبطها؟</h3>
+                <label class="option"><input type="radio" name="q3" value="right"> فدايا الف عربيه</label>
+                <label class="option"><input type="radio" name="q3" value="wrong"> هتقولي ان عادي كده كده الستات مبعترفتش تسوق</label>
+                <label class="option"><input type="radio" name="q3" value="wrong"> هتزعل وتقولي مش هديهالك تاني</label>
+                <div id="alert-3" class="alert-msg">طب مفيش عيد ميلاد كده! حاول تاني 😾</div>
+            </div>
+            <button class="btn check-btn" data-step="3">تأكيد الإجابة</button>
+        </div>
+
+        <!-- السؤال الرابع (بالإجابات الجديدة اللايقة) -->
+        <div id="step-4" class="quiz-step">
+            <div class="quiz-box">
+                <h3>السؤال الرابع: لو قلتلك مش هنزل الهدوم.. منزلش هدوم الشتاء واطبق هدوم الصيف، هتعمل إيه؟</h3>
+                <label class="option"><input type="radio" name="q4" value="wrong"> هتقولي سيبك منها وتعال نخرج نتفسح</label>
+                <label class="option"><input type="radio" name="q4" value="right"> هتقولي طب خلاص سيبي الشتاء مكانها وطبقي الصيف بس براحتك</label>
+                <label class="option"><input type="radio" name="q4" value="wrong"> هتعصب وتقولي لازم تنزليها حالا</label>
+                <div id="alert-4" class="alert-msg">طب مفيش عيد ميلاد كده! حاول تاني 😾</div>
+            </div>
+            <button class="btn check-btn" data-step="4">تأكيد الإجابة</button>
+        </div>
+
+        <!-- شاشة الرسالة، الأغنية، والفيديو (بدون صور) -->
+        <div id="memories-section" class="memories">
+            <h1 style="margin-bottom: 5px;">Let's Celebrate Joby 🎉</h1>
+            <p class="subtitle">Our Special Moments</p>
+
+            <!-- رسالة الحب الجديدة -->
+            <div class="love-letter">
+ابو يونسسس روح قلبيي بجد من قلبي 🫂
+مفيش كلام يوصف حبي ليك وغلاوتك عندي كل حاجة عملتها علشاني لحد دلوقتي في قلبي حتي كلامك عمري مبنساه كل لحظه بينا فرح وحزن وضغط وتعب في بالي مبيروحش بتمني تفضل معايا علطول 
+
+ده أول عيد ميلاد ليك وأنت معايا، وإن شاءلله السنه الجايه زي دلوقتي نبقا بنجهز لحاجات احلي بتمني تتحقق بحبك ي جوبي 🫂❤❤
+            </div>
+
+            <!-- مكان الأغنية -->
+            <div class="music-box" style="text-align: center;">
+                <h3 style="color: #b84a65; font-size: 16px; margin-bottom: 8px;">🎵 Our Song</h3>
+                <audio controls style="width: 100%; margin-bottom: 8px;">
+                    <source src="song.mp3" type="audio/mpeg">
+                </audio>
+                <p style="font-size: 13px; font-weight: bold; color: #703646;">عايزه أشغلها وأنا معاك بعد خطوبتنا ❤️</p>
+            </div>
+
+            <!-- مكان الفيديو -->
+            <div class="video-box" style="text-align: center;">
+                <h3 style="color: #b84a65; font-size: 16px; margin-bottom: 8px;">🎬 Watch This</h3>
+                <video controls style="width: 100%; border-radius: 10px; max-height: 220px;">
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const startBtn = document.getElementById("start-btn");
+            if (startBtn) {
+                startBtn.addEventListener("click", function() {
+                    document.getElementById("welcome-section").style.display = "none";
+                    document.getElementById("step-1").style.display = "block";
+                });
+            }
+
+            const checkButtons = document.querySelectorAll(".check-btn");
+            checkButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const stepNum = button.getAttribute("data-step");
+                    const selected = document.querySelector(`input[name="q${stepNum}"]:checked`);
+                    const alertBox = document.getElementById(`alert-${stepNum}`);
+
+                    if (!selected) {
+                        alert("من فضلك اختاري إجابة!");
+                        return;
+                    }
+
+                    if (selected.value === "right") {
+                        alertBox.style.display = "none";
+                        document.getElementById(`step-${stepNum}`).style.display = "none";
+
+                        if (parseInt(stepNum) < 4) {
+                            document.getElementById(`step-${parseInt(stepNum) + 1}`).style.display = "block";
+                        } else {
+                            document.getElementById("memories-section").style.display = "block";
+                        }
+                    } else {
+                        alertBox.style.display = "block";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
